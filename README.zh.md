@@ -45,7 +45,7 @@ Fork 自 [`lyk308/dsh-token-dashboard`](https://github.com/lyk308/dsh-token-dash
 dsh plugin --profile <profile> add github:LynnChrysteiin/dsh-token-dashboard
 
 # 从 npm
-dsh plugin --profile <profile> add @lynnchrysteiin/dsh-token-dashboard
+dsh plugin --profile <profile> add @astralux/dsh-token-dashboard
 
 # 从本地检出（开发用）
 dsh plugin --profile <profile> add /本仓库的绝对路径

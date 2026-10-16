@@ -45,7 +45,7 @@ This is a standard DSH bundle plugin, so install it with the official CLI:
 dsh plugin --profile <profile> add github:LynnChrysteiin/dsh-token-dashboard
 
 # From npm
-dsh plugin --profile <profile> add @lynnchrysteiin/dsh-token-dashboard
+dsh plugin --profile <profile> add @astralux/dsh-token-dashboard
 
 # From a local checkout (development)
 dsh plugin --profile <profile> add /absolute/path/to/this/repo

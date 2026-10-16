@@ -4,4 +4,4 @@
 # (the "用量看板" settings section never shows; the host half routes still work).
 - insert:
     - id: token-dashboard
-      name: "@lynnchrysteiin/dsh-token-dashboard"
+      name: "@astralux/dsh-token-dashboard"
