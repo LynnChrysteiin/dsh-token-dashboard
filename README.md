@@ -1,10 +1,8 @@
 # dsh-token-dashboard
 
-[![awesome · DSH plugin](https://awesome-dsh-plugin.com/badge.svg)](https://awesome-dsh-plugin.com)
-
 DeepSeek Harness 的用量看板：把**账户余额**、**Token 使用量**和**花费**放在一个页面里，按天、按模型、按工作区看清钱花在哪。
 
-数据全部来自本地 —— 会话日志 + DeepSeek 官方余额接口，不需要额外的云端账号。整个看板长这样：
+数据全部来自本地 —— 会话日志 + DeepSeek 官方余额接口，不需要额外的云端账号。
 
 <img src="docs/screenshot-overview.png" alt="用量看板全貌" width="620">
 
@@ -22,15 +20,13 @@ DeepSeek Harness 的用量看板：把**账户余额**、**Token 使用量**和*
 
 按 DeepSeek 的三档计费**分别算出金额**：缓存命中输入、缓存未命中输入、输出。
 
-三者单价最多差 30 倍，只看总数看不出钱花在哪 —— 比如下面这张图里，缓存命中占了大部分花费，而它恰恰是单价最低的一档。
-
 <img src="docs/screenshot-usage.png" alt="Token 使用量与成本构成" width="560">
 
 计费口径：
 
 - **峰谷价**：高峰为北京时间周一至周五 09:00–12:00、14:00–18:00，其余时段（含周末）减半。判断按事件自身的时间，因此不随查看时间或设备时区变化。
 - **按日期分档计价**：DeepSeek 每次调价记为一个新档位，事件用**它自己那天生效的单价**计算。所以后来调价不会改写之前几天的金额。
-- **这是估算**：插件只读取会话日志里的 token 数，再乘自己的价目表，并不知道 DeepSeek 实际扣了多少。对账请以官方账单为准。
+- **实际为估算**：插件只读取会话日志里的 token 数，再乘自己的价目表，并不知道 DeepSeek 实际扣了多少。对账请以官方账单为准。
 - **未知模型**会被按 Flash 档计价，并在 `/api/token-dashboard/stats` 的 `unpricedModels` 里列出，以免静默算错。
 
 改价：编辑 `lib/index.js` 里的 `PRICE_TIERS`，新增一条 `{ from: "YYYY-MM-DD", models: { ... } }` 即可；不同时段的单价写成 `[高峰, 空闲]` 两个数。官方价目见 [DeepSeek 定价页](https://api-docs.deepseek.com/zh-cn/quick_start/pricing)，发布日期见[更新日志](https://api-docs.deepseek.com/zh-cn/updates)。`PRICING_GAPS` 记录了表里哪些数字不是官方来源。
@@ -41,7 +37,7 @@ DeepSeek Harness 的用量看板：把**账户余额**、**Token 使用量**和*
 
 ### 活跃度
 
-整年热力图（53 周 × 7 天，行对齐真实星期，标注月份）。鼠标移到任意格子上，显示当天日期、Token 与花费。
+整年热力图（53 周 × 7 天）。悬停可显示当天日期、Token 与花费。
 
 下面这张图同时能看到分工作区曲线和整年热力图：
 
@@ -57,7 +53,7 @@ DeepSeek Harness 的用量看板：把**账户余额**、**Token 使用量**和*
 dsh plugin --profile <profile> add @astralux/dsh-token-dashboard
 ```
 
-装完**刷新网页**，看板出现在 **设置 → 用量看板**。
+装完**刷新**，看板出现在 **设置 → 用量看板**。
 
 也可以从 GitHub 或本地目录安装：
 
@@ -76,7 +72,7 @@ dsh plugin --profile <profile> add /本仓库的绝对路径
 
 ## 配置
 
-不用配置即可使用。想改的话，host 半在 `lib/index.js` 里读这几个值：
+不用配置即可使用。想改的话，host 部分在 `lib/index.js` 里读这几个值：
 
 | 项 | 默认 | 说明 |
 |---|---|---|
@@ -90,7 +86,7 @@ dsh plugin --profile <profile> add /本仓库的绝对路径
 
 - **金额是估算**：插件只读会话日志里的 token 数，再乘自己的价目表，并不知道 DeepSeek 实际扣了多少。对账以官方账单为准。
 - **余额显示「未配置 DeepSeek API Key」**：说明你用的是账号态登录而不是 API Key。余额卡片会空着，**Token 与花费统计不受影响**（它们来自本地会话日志）。
-- **没有构建步骤**：两半都是纯 JavaScript，无依赖。改 `lib/client.js` 刷新页面即可，改 `lib/index.js` 需要重启 DSH。
+- **没有构建步骤**：纯 JavaScript，无依赖。改 `lib/client.js` 刷新页面即可，改 `lib/index.js` 需要重启 DSH。
 
 ## 来源
 
