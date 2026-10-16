@@ -28,8 +28,10 @@
     "lib/client.js",
     "cordis.patch.yml",
     "README.md",
-    "README.zh.md",
-    "LICENSE"
+    "LICENSE",
+    "docs/screenshot-overview.png",
+    "docs/screenshot-usage.png",
+    "docs/screenshot-activity.png"
   ],
   "keywords": [
     "deepseek-harness",
