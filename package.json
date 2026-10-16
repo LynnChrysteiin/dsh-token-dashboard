@@ -1,7 +1,7 @@
 {
   "name": "@lynnchrysteiin/dsh-token-dashboard",
-  "version": "0.1.6",
-  "description": "DeepSeek Harness 实时看板：账户余额 + Token 使用量（按模型/工作区/缓存命中），本地读取会话日志 + DeepSeek /user/balance。",
+  "version": "0.2.0",
+  "description": "DeepSeek Harness 用量看板：账户余额、Token 使用量、按缓存命中/未命中输入与输出的成本拆分，附一年活跃度热力图与分工作区趋势曲线。Fork of @lyk308/dsh-token-dashboard with dsh 0.2.0-rc.2 compatibility fixes.",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -29,17 +29,27 @@
     "cordis.patch.yml",
     "README.md",
     "README.zh.md",
-    "LICENSE",
-    "docs"
+    "LICENSE"
   ],
   "keywords": [
     "deepseek-harness",
     "dsh",
+    "dsh-plugin",
     "plugin",
     "token",
     "balance",
     "usage",
+    "cost",
     "dashboard"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "author": "LynnChrysteiin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LynnChrysteiin/dsh-token-dashboard.git"
+  },
+  "homepage": "https://github.com/LynnChrysteiin/dsh-token-dashboard#readme",
+  "bugs": {
+    "url": "https://github.com/LynnChrysteiin/dsh-token-dashboard/issues"
+  }
 }
