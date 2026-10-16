@@ -1,0 +1,7 @@
+# dsh-token-dashboard bundle patch
+# name MUST equal package.json's "name" (@lyk308/dsh-token-dashboard).
+# Otherwise dsh-client-modules' nearestPackage skips this plugin's client half
+# (the "用量看板" settings section never shows; the host half routes still work).
+- insert:
+    - id: token-dashboard
+      name: "@lyk308/dsh-token-dashboard"

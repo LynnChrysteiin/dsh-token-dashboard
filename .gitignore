@@ -1,0 +1,17 @@
+# Node
+node_modules/
+*.tgz
+
+# Internal release guide (local only — never commit/publish)
+RELEASE.md
+
+# Temp / dev leftovers
+_*.mjs
+_*.js
+_*.py
+_*.html
+*.log
+
+# OS
+Thumbs.db
+.DS_Store
