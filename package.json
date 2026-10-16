@@ -1,5 +1,5 @@
 {
-  "name": "@lyk308/dsh-token-dashboard",
+  "name": "@lynnchrysteiin/dsh-token-dashboard",
   "version": "0.1.6",
   "description": "DeepSeek Harness 实时看板：账户余额 + Token 使用量（按模型/工作区/缓存命中），本地读取会话日志 + DeepSeek /user/balance。",
   "type": "module",
