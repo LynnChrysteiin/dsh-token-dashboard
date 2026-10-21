@@ -88,6 +88,20 @@ dsh plugin --profile <profile> add /本仓库的绝对路径
 - **余额显示「未配置 DeepSeek API Key」**：说明你用的是账号态登录而不是 API Key。余额卡片会空着，**Token 与花费统计不受影响**（它们来自本地会话日志）。
 - **没有构建步骤**：纯 JavaScript，无依赖。改 `lib/client.js` 刷新页面即可，改 `lib/index.js` 需要重启 DSH。
 
+## 开发与测试
+
+需要支持 `node:zlib` Zstandard 的 Node.js 版本（测试使用 Node.js 24）。无须安装依赖，运行：
+
+```bash
+npm test
+```
+
+测试会在临时目录构造旧版 `session.jsonl[.zstd]` 和新版 `session.v4.jsonl[.zstd]`，覆盖多帧压缩、模型切换、缺失请求头及时间窗口边界。`test/fixtures/missing-header.jsonl` 是单条消息的最小合成样例。
+
+所有统计统一按以下顺序确定单次用量的模型：`data.message.source.model` → `data.usage.model` → `data.chunk.model` → `data.model` → 顶层 `model` → 请求上下文 → `unknown`。
+
+时间口径：今日／近 7 天／近 30 天卡片按本地日历日统计；全局时间范围按查询时刻回溯 7／30 个 24 小时，筛选分组和趋势数据。热力图保留全部历史。
+
 ## 来源
 
 Fork 自 [lyk308/dsh-token-dashboard](https://github.com/lyk308/dsh-token-dashboard)，MIT 许可，原作者 [@lyk308](https://github.com/lyk308)。本仓库在其基础上修好了 dsh 0.2.0-rc.2 的兼容问题（原版在这个版本上所有数字都读成 0），修正了按官方价目计价，并做了上面这些扩展。

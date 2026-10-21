@@ -4,6 +4,9 @@
   "description": "DeepSeek Harness 用量看板：账户余额、Token 使用量、按缓存命中/未命中输入与输出的成本拆分，附一年活跃度热力图与分工作区趋势曲线。Fork of @lyk308/dsh-token-dashboard with dsh 0.2.0-rc.2 compatibility fixes.",
   "type": "module",
   "main": "lib/index.js",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
   "exports": {
     ".": "./lib/index.js",
     "./client": "./lib/client.js",

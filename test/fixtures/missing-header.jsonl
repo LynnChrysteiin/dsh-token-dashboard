@@ -1,0 +1,1 @@
+{"type":"assistant/message","time":1792292400000,"data":{"message":{"source":{"model":"deepseek-v4-pro"}},"usage":{"inputTokens":100,"outputTokens":20,"cacheReadTokens":30,"reasoningTokens":5}}}
